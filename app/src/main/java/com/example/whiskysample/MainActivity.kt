@@ -12,8 +12,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.whiskysample.ui.first.FirstFragment
+import com.example.whiskysample.ui.fourth.FourthFragment
+import com.example.whiskysample.ui.second.SecondFragment
+import com.example.whiskysample.ui.third.ThirdFragment
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,32 +25,25 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
+//        val appBarConfiguration = AppBarConfiguration(
+//            setOf(
+//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+//            )
+//        )
+//        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_first, R.id.navigation_second, R.id.navigation_third, R.id.navigation_fourth
+            )
+        )
+
+        findViewById<Toolbar>(R.id.toolbar)
+            .setupWithNavController(navController, appBarConfiguration)
+        onSupportNavigateUp()
+
         navView.setupWithNavController(navController)
-        navView.setOnNavigationItemSelectedListener(this)
-    }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.navigation_first -> {
-
-            }
-            R.id.navigation_second -> {
-
-            }
-            R.id.navigation_third -> {
-
-            }
-            R.id.navigation_fourth -> {
-
-            }
-        }
-        return true
-    }
-
-    private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment).commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
