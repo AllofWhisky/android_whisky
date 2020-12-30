@@ -2,8 +2,9 @@ package com.example.whiskysample.ui.fourth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class FourthViewModel {
+class FourthViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
         value = "This is fourth Fragment"
     }

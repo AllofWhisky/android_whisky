@@ -19,7 +19,8 @@
     <item
         android:id="@+id/navigation_fourth"
         android:icon="@drawable/ic_search_24dp"
-        android:title="@string/title_third" />
+        android:menuCategory="secondary"
+        android:title="@string/title_fourth" />
 
 
 </menu>

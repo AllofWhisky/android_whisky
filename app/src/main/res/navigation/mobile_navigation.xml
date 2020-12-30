@@ -23,5 +23,12 @@
         android:id="@+id/navigation_third"
         android:name="com.example.whiskysample.ui.third.ThirdFragment"
         android:label="@string/title_third"
-        tools:layout="@layout/fragment_third" />
+        tools:layout="@layout/fragment_third" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_fourth"
+        android:name="com.example.whiskysample.ui.fourth.FourthFragment"
+        android:label="@string/title_fourth"
+        tools:layout="@layout/fragment_fourth" />
 </navigation>
