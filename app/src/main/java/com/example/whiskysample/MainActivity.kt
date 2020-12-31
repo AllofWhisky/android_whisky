@@ -1,9 +1,11 @@
 package com.example.whiskysample
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -16,6 +18,7 @@ import com.example.whiskysample.ui.first.FirstFragment
 import com.example.whiskysample.ui.fourth.FourthFragment
 import com.example.whiskysample.ui.second.SecondFragment
 import com.example.whiskysample.ui.third.ThirdFragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         onSupportNavigateUp()
 
         navView.setupWithNavController(navController)
+
+        floating_add
+        findViewById<FloatingActionButton>(R.id.floating_add).setOnClickListener {
+            Toast.makeText(this, "Write Activity Move Button", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WriteActivity::class.java))
+        }
 
     }
 
