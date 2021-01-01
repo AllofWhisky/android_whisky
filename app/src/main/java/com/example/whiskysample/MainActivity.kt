@@ -18,9 +18,12 @@ import com.example.whiskysample.ui.first.FirstFragment
 import com.example.whiskysample.ui.fourth.FourthFragment
 import com.example.whiskysample.ui.second.SecondFragment
 import com.example.whiskysample.ui.third.ThirdFragment
+import com.example.whiskysample.util.BackKeyHandler
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
+    private var finishTime: Long = 2000
+    private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_first, R.id.navigation_second, R.id.navigation_third, R.id.navigation_fourth
+                R.id.navigation_first,
+                R.id.navigation_second,
+                R.id.navigation_third,
+                R.id.navigation_fourth
             )
         )
 
@@ -47,11 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        floating_add
         findViewById<FloatingActionButton>(R.id.floating_add).setOnClickListener {
             Toast.makeText(this, "Write Activity Move Button", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, WriteActivity::class.java))
         }
+
+
 
     }
 
@@ -68,6 +75,20 @@ class MainActivity : AppCompatActivity() {
 
         else -> {
             super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onBackPressed() {
+        if(supportFragmentManager.backStackEntryCount == 0) {
+            val tempTime = System.currentTimeMillis()
+            val intervalTime = tempTime - backPressedTime;
+            if (intervalTime in 0..finishTime) {
+                super.onBackPressed()
+            } else {
+                backPressedTime = tempTime;
+                Toast.makeText(this, "뒤로 가기 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+                return
+            }
         }
     }
 }
