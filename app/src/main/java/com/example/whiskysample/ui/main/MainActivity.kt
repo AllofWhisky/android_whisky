@@ -1,4 +1,4 @@
-package com.example.whiskysample
+package com.example.whiskysample.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,16 +9,11 @@ import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.whiskysample.ui.first.FirstFragment
-import com.example.whiskysample.ui.fourth.FourthFragment
-import com.example.whiskysample.ui.second.SecondFragment
-import com.example.whiskysample.ui.third.ThirdFragment
-import com.example.whiskysample.util.BackKeyHandler
+import com.example.whiskysample.R
+import com.example.whiskysample.ui.write.WriteActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {

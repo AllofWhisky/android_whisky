@@ -1,7 +1,8 @@
-package com.example.whiskysample
+package com.example.whiskysample.ui.write
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.whiskysample.R
 
 class WriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
