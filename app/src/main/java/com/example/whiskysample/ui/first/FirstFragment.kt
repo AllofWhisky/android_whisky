@@ -24,9 +24,9 @@ class FirstFragment : Fragment() {
                 ViewModelProvider(this).get(FirstViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_first, container, false)
         val textView: TextView = root.findViewById(R.id.text_first)
-        firstViewModel.getAll().observe(viewLifecycleOwner,Observer<List<CommunityContact>>{
-                communityContacts -> // UpdateUI
-        })
+//        firstViewModel.getAll().observe(viewLifecycleOwner,Observer<List<CommunityContact>>{
+//                communityContacts -> // UpdateUI
+//        })
         return root
     }
 }

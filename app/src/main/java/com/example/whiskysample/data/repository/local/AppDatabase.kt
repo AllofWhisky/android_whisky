@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.whiskysample.data.model.User
 import com.example.whiskysample.data.model.UserDao
-import com.example.whiskysample.data.model.UserEntity
 
-@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
+@Database(entities = [User::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -17,11 +17,7 @@ abstract class AppDatabase : RoomDatabase() {
         @Synchronized
         fun getInstance(context: Context): AppDatabase? {
             if (instance == null) {
-                instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "database-contacts"
-                )
+                instance = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "database-user")
                     .allowMainThreadQueries()
                     .build()
             }

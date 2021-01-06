@@ -13,11 +13,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.whiskysample.R
+import com.example.whiskysample.ui.login.LoginActivity
+import com.example.whiskysample.ui.scan.BarcodeScanActivity
 import com.example.whiskysample.ui.write.WriteActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
-    private var finishTime: Long = 2000
     private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,9 +49,8 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        findViewById<FloatingActionButton>(R.id.floating_add).setOnClickListener {
-            Toast.makeText(this, "Write Activity Move Button", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, WriteActivity::class.java))
+        findViewById<FloatingActionButton>(R.id.floating_button).setOnClickListener {
+            startActivity(Intent(this, BarcodeScanActivity::class.java))
         }
 
 
@@ -74,13 +74,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        val finishTime: Long = 2000
         if(supportFragmentManager.backStackEntryCount == 0) {
             val tempTime = System.currentTimeMillis()
-            val intervalTime = tempTime - backPressedTime;
+            val intervalTime = tempTime - backPressedTime
             if (intervalTime in 0..finishTime) {
                 super.onBackPressed()
             } else {
-                backPressedTime = tempTime;
+                backPressedTime = tempTime
                 Toast.makeText(this, "뒤로 가기 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
                 return
             }
